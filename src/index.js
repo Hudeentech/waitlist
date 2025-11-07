@@ -31,17 +31,15 @@ if (process.env.NODE_ENV === 'production') {
     app.set('trust proxy', 1);
 }
 
-// Session configuration
+// Session configuration for Vercel
 app.use(session({
     secret: process.env.SESSION_SECRET || 'change-this-secret',
     resave: false,
     saveUninitialized: false,
-    // cookie.secure should only be true when running under HTTPS in production.
-    // Allow forcing SSL via FORCE_SSL=true in production environments where HTTPS is enabled.
     cookie: {
-        secure: (process.env.NODE_ENV === 'production' && process.env.FORCE_SSL === 'true') || false,
+        secure: true, // Always use secure cookies in production
         httpOnly: true,
-        sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'lax',
+        sameSite: 'none', // Required for cross-site cookie handling
         maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
 }));

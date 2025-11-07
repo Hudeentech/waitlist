@@ -6,7 +6,17 @@ const router = express.Router();
 
 // Simple admin auth using credentials from env
 function ensureAdmin(req, res, next) {
-  if (req.session && req.session.isAdmin) return next();
+  console.log('Checking admin session:', { 
+    hasSession: !!req.session,
+    sessionData: req.session
+  });
+  
+  if (req.session && req.session.isAdmin === true) {
+    console.log('Admin session verified');
+    return next();
+  }
+  
+  console.log('No admin session, redirecting to login');
   return res.redirect('/admin/login');
 }
 
@@ -14,19 +24,36 @@ router.get('/login', (req, res) => {
   res.render('login', { error: req.flash('error') });
 });
 
-router.post('/login', (req, res) => {
-  const { username, password } = req.body;
-  const adminUser = process.env.ADMIN_USER || 'admin';
-  const adminPass = process.env.ADMIN_PASS || 'password123';
+router.post('/login', async (req, res) => {
+  try {
+    const { username, password } = req.body;
+    const adminUser = process.env.ADMIN_USER || 'admin';
+    const adminPass = process.env.ADMIN_PASS || 'password123';
 
-  if (username === adminUser && password === adminPass) {
-    req.session.isAdmin = true;
-    req.session.adminUser = username;
-    return res.redirect('/admin/dashboard');
+    console.log('Login attempt:', { username, adminUser }); // Debug login attempt
+
+    if (username === adminUser && password === adminPass) {
+      // Set session data
+      req.session.isAdmin = true;
+      req.session.adminUser = username;
+      
+      // Wait for session to be saved
+      await new Promise((resolve) => req.session.save(resolve));
+      
+      console.log('Session after login:', req.session); // Debug session data
+      
+      // Redirect with absolute path
+      return res.redirect(302, '/admin/dashboard');
+    }
+
+    console.log('Login failed: invalid credentials'); // Debug failed login
+    req.flash('error', 'Invalid credentials');
+    return res.redirect('/admin/login');
+  } catch (err) {
+    console.error('Login error:', err);
+    req.flash('error', 'An error occurred during login');
+    return res.redirect('/admin/login');
   }
-
-  req.flash('error', 'Invalid credentials');
-  return res.redirect('/admin/login');
 });
 
 router.get('/logout', (req, res) => {
