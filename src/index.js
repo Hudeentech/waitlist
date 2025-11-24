@@ -37,9 +37,9 @@ app.use(session({
     resave: false,
     saveUninitialized: false,
     cookie: {
-        secure: true, // Always use secure cookies in production
         httpOnly: true,
-        sameSite: 'none', // Required for cross-site cookie handling
+        secure: true,       // IMPORTANT FOR LOCAL
+        sameSite: "none",// Required for cross-site cookie handling
         maxAge: 24 * 60 * 60 * 1000 // 24 hours
     }
 }));
