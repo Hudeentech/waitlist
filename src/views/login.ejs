@@ -18,18 +18,19 @@
       }
     </script>
   </head>
-  <body class="bg-gray-50">
+  <body class="bg-gradient-to-tr from-[#52AF44] to-green-800">
     <div class="min-h-screen flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
       <div class="max-w-md w-full space-y-8">
         <div>
-          <div class="w-16 h-16 mx-auto bg-primary rounded-full flex items-center justify-center">
-            <i class="fas fa-envelope text-3xl text-white"></i>
+          <div class=" mx-auto rounded-full flex items-center justify-center">
+              <img class="w-[100px]" src="/images/logo.png" alt="img">
           </div>
-          <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Waitlist Admin</h2>
-          <p class="mt-2 text-center text-sm text-gray-600">Sign in to manage your subscribers</p>
+
+          <h2 class="mt-6 text-center text-3xl font-semibold text-white">Waitlist Admin</h2>
+          <p class="mt-2 text-center text-sm text-gray-200">Sign in to manage your subscribers</p>
         </div>
 
-        <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100">
+        <div class=" p-4">
           <% if (error && error.length) { %>
             <div class="mb-6 p-4 rounded-md bg-red-50 border border-red-200">
               <div class="flex">
@@ -41,24 +42,24 @@
 
           <form method="post" action="/admin/login" class="space-y-6">
             <div>
-              <label class="block text-sm font-medium text-gray-700">
-                <i class="fas fa-user text-gray-400 mr-1"></i>
+              <label class="block text-sm font-medium text-gray-100">
+                <i class="fas fa-user text-gray-100 mr-1"></i>
                 Username
               </label>
               <input name="username" required autofocus
-                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" />
+                class="mt-1 block w-full px-3 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" />
             </div>
             <div>
-              <label class="block text-sm font-medium text-gray-700">
-                <i class="fas fa-lock text-gray-400 mr-1"></i>
+              <label class="block text-sm font-medium text-gray-100">
+                <i class="fas fa-lock text-gray-100 mr-1"></i>
                 Password
               </label>
               <input name="password" type="password" required
-                class="mt-1 block w-full px-3 py-2 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" />
+                class="mt-1 block w-full px-3 py-3 bg-white border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-primary focus:border-primary" />
             </div>
             <div>
               <button type="submit"
-                class="w-full flex items-center justify-center py-2 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
+                class="w-full flex items-center justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-colors">
                 <i class="fas fa-sign-in-alt mr-2"></i>
                 Sign in
               </button>
@@ -66,10 +67,9 @@
           </form>
         </div>
         
-        <div class="text-center text-sm text-gray-500">
-          <i class="fas fa-info-circle text-gray-400 mr-1"></i>
-          Default login: <code class="px-2 py-1 bg-gray-100 rounded">enter admin details</code> / <code class="px-2 py-1 bg-gray-100 rounded">enter mater password</code>
-          <div class="mt-1 text-gray-400">(change in .env)</div>
+        <div class="text-center text-sm text-gray-100 rounded-xl m-2 p-4 border">
+          <i class="fas fa-info-circle text-gray-410 mr-1"></i>
+          Please Note: <i>this Admin panel belongs to KORIM TECHNOLOGY to login please use your username and master's password</i>
         </div>
       </div>
     </div>

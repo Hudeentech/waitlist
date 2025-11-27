@@ -45,11 +45,15 @@ app.use(session({
 }));
 app.use(flash());
 
+app.use(express.static(path.join(__dirname, 'public')));
+
 // view engine
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 
 // Database connection with detailed error handling
+
+
 async function startServer() {
     try {
         await mongoose.connect(process.env.MONGODB_URI);

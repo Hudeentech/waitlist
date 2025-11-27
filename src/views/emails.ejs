@@ -21,10 +21,11 @@
   <body class="bg-gray-50">
     <div class="min-h-screen flex">
       <!-- Sidebar for desktop -->
-      <div class="hidden md:flex md:flex-col md:w-64 md:fixed md:inset-y-0 bg-primary">
-        <div class="flex items-center justify-center h-16 px-4">
-          <span class="text-white text-xl font-bold">Waitlist Admin</span>
+      <div class="hidden md:flex md:flex-col md:w-64 md:fixed md:inset-y-0 bg-gradient-to-b from-[#52AF44] to-green-800">
+        <div class="flex items-center justify-start h-16 px-4">
+            <img class="w-[100px]" src="/images/logo.png" alt="img">
         </div>
+
         <div class="flex-1 flex flex-col overflow-y-auto">
           <nav class="flex-1 px-4 py-4 space-y-2">
             <a href="/admin/dashboard" class="flex items-center px-4 py-3 text-white rounded-lg hover:bg-white/10 transition-colors">
@@ -52,7 +53,10 @@
       <!-- Mobile header -->
       <div class="md:hidden bg-primary fixed w-full top-0 z-10">
         <div class="px-4 h-16 flex items-center justify-between">
-          <span class="text-white text-xl font-bold">Waitlist Admin</span>
+           <div class="flex items-center justify-start h-16 px-4">
+              <img class="w-[100px]" src="/images/logo.png" alt="img">
+            </div>
+            
           <button id="menuBtn" class="text-white">
             <i class="fas fa-bars text-xl"></i>
           </button>
